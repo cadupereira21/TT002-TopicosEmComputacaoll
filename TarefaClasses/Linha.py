@@ -26,4 +26,7 @@ class Linha:
 
         self.dados.append(obj)
         return
+
+    def IndexOf(self, value):
+        return self.dados.index(value)
     
