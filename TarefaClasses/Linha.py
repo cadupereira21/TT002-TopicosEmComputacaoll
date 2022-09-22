@@ -1,3 +1,11 @@
+'''
+AUTORES:
+
+Carlos Eduardo de Andrade Pereira - 168321
+Luiz Otávio de Oliveira Silva - 240519
+Pedro Augusto Canuto de Oliveira - 186691
+'''
+
 from ast import List
 
 
