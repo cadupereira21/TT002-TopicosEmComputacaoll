@@ -1,6 +1,3 @@
-from TarefaTabela2.Tabela import Tabela
-
-
 from Tabela import Tabela
 
 '''
@@ -13,13 +10,15 @@ Pedro Augusto Canuto de Oliveira - 186691
 # A tarefa desta semana é uma continuação da implementação da tabela.
 # Primeiramente deve existir um construtor da classe Tabela com
 # zero ou um argumentos. Se for executado
+
 teste = Tabela()
+
 # deve ser criada uma tabela vazia.
 # por outro lado, se for passado no construtor o nome de um arquivo,
 # a tabela deve ser carregada deste arquivo.
 # Veja o exemplo:
 teste = Tabela("carros.txt")
-print(teste)
+#print(teste)
 # O arquivo carros.txt que possui a tabela vai ser dado para você.
 # Veja abaixo o formato do arquivo.
 # ['placa','ano','marca','modelo']
@@ -35,6 +34,7 @@ print(teste)
 #
 #
 # Agora você deve criar um método em Tabela que salva a tabela em um arquivo.
+
 teste.writeFile("saida.txt")
 
 # Este método cria um arquivo contendo os dados da tabela. Ele deve funcionar de maneira

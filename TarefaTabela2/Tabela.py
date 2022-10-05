@@ -6,16 +6,24 @@ Luiz Otávio de Oliveira Silva - 240519
 Pedro Augusto Canuto de Oliveira - 186691
 '''
 
+from typing import List
 from Linha import Linha
 class Tabela:
 
     # TODO:
-    # 1) Implementar construtor com argumento do tipo arquivo. O arquivo que será passado será no modelo de carros.txt
-    # 2) Método writeFile(nomeArquivo) para salvar tabela em um arquivo
+    # 1) (CHECK) Implementar construtor com argumento do tipo arquivo. O arquivo que será passado será no modelo de carros.txt
+    # 2) (CHECK) Método writeFile(nomeArquivo) para salvar tabela em um arquivo
 
-    def __init__(self):
-        self.dados = []
-        self.cabecalho = Linha()
+    def __init__(self, file=""):
+        if(file == ""):
+            self.dados = []
+            self.cabecalho = Linha()
+            return
+
+        self.file = open(file)
+        self.cabecalho = Linha(self.file.readline())
+        self.dados = self.file.readlines()
+        self.file.close()
 
     def add_cabecalho(self,valor):
         return self.cabecalho.append(valor)  
@@ -33,14 +41,17 @@ class Tabela:
                 aux = self.dados[i+1]
                 self.dados[i+1] = self.dados[i]
                 self.dados[i] = aux
+
+    def writeFile(self, fileName):
+        file = open(fileName, "w")
+        file.write(str(self.cabecalho)+'\n')
+        file.writelines(self.dados)
+        file.close()
+
     
     def __str__(self):
         aux = str(self.cabecalho) + "\n"
-        for s in range(0, len(str(self.cabecalho))+1):
-            aux += "-"
-
-        aux += "\n"
 
         for s in self.dados:
-            aux += str(s) + f"({(str(len(self.cabecalho.dados)))})" + "\n"
+            aux += str(s)
         return aux
