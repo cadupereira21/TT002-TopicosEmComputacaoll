@@ -1,0 +1,3 @@
+{'Marca': 'a', 'Modelo': 'b', 'Placa': 'c'}
+{'Marca': 'd', 'Modelo': 'e', 'Placa': 'f'}
+{'Marca': 'g', 'Modelo': 'h', 'Placa': 'i'}
