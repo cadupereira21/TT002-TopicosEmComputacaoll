@@ -1,7 +1,9 @@
+import random
 from Coordenada import Coordenada
 
 class Rota:
-    coordenadas = []
+    def __init__(self):
+        self.coordenadas = []
 
     def __str__(self):
         if len(self.coordenadas) == 0:
@@ -17,6 +19,13 @@ class Rota:
     def addCoord(self, coord):
         self.coordenadas.append(coord)
 
+    def switchCoord(self, target, destiny):
+        if target == destiny:
+            return
+        aux = self.coordenadas[target]
+        self.coordenadas[target] = self.coordenadas[destiny]
+        self.coordenadas[destiny] = aux
+
     def comprimento(self):
         totalDistance = 0
 
@@ -27,4 +36,30 @@ class Rota:
         return totalDistance
 
     def copy(self):
-        return Rota()
+        aux = Rota()
+
+        for c in self.coordenadas.copy():
+            aux.addCoord(c)
+        
+        return aux
+
+    def shuffle(self):
+        random.shuffle(self.coordenadas)
+
+    def otimiza(self):
+        actualComprimento = self.comprimento()
+        for i in range(len(self.coordenadas)-1):
+            lowestDistance = self.coordenadas[i].distancia(self.coordenadas[i+1])
+            for j in range(i+2, len(self.coordenadas)):
+                aux = i+1
+                if self.coordenadas[i].distancia(self.coordenadas[j]) < lowestDistance:
+                    aux = j
+            self.switchCoord(i+1, aux)
+        
+        if actualComprimento < self.comprimento():
+            self.otimiza()
+        else:
+            return
+
+              
+                
