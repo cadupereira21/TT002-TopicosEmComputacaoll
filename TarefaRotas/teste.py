@@ -1,8 +1,9 @@
 from Rota import Rota
+from Coordenada import Coordenada
 
 rota = Rota()
-n = 8
-max_coord = 400
-rota.randomCoords(n, max_coord)
-print(rota)
-print(rota.maximo())
+rota.addCoord(Coordenada((0, 0)))
+rota.addCoord(Coordenada((300, 300)))
+rota.addCoord(Coordenada((600, 0)))
+filename = "rotaA.png"
+rota.desenha(filename).show()

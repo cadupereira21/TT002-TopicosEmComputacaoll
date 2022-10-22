@@ -2,6 +2,7 @@ import math
 import random
 from time import time
 from Coordenada import Coordenada
+from PIL import Image, ImageDraw
 
 class Rota:
     def __init__(self):
@@ -92,5 +93,31 @@ class Rota:
                 yMax = c.y
         
         return (xMax, yMax)
-              
-                
+
+    def desenha(self, fp):
+
+        routeSize = self.maximo()
+        constX = (routeSize[0]*0.1)/2
+        constY = (routeSize[1])/2
+
+        img = Image.new('RGB',(math.ceil(routeSize[0]*1.1), math.ceil(routeSize[1]*1.6)),(255,255,255))
+        pixels = img.load()
+
+        for c in self.coordenadas:
+            pixels[c.x +constX, c.y +constY] = (0,0,0)
+
+        for i in range(len(self.coordenadas)):
+            coord1 = (self.coordenadas[i].x+constX, self.coordenadas[i].y+constY)
+            if i+1 != len(self.coordenadas):
+                coord2 = (self.coordenadas[i+1].x+constX, self.coordenadas[i+1].y+constY)
+            else:
+                coord2 = (self.coordenadas[0].x+constX, self.coordenadas[0].y+constY)
+            shape = [coord1, coord2] 
+            img1 = ImageDraw.Draw(img)   
+            img1.line(shape, fill ="black", width = 2) 
+
+        #TODO: Escrever comprimento
+
+        img.transpose(method=Image.FLIP_TOP_BOTTOM).save(fp)
+
+        return img.transpose(method=Image.FLIP_TOP_BOTTOM)
