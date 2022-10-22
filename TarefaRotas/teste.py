@@ -1,7 +1,8 @@
 from Rota import Rota
 
 rota = Rota()
-# tempo em ms
-t = 3500
-# Explicação do método abaixo.
-rota.espera(t)
+n = 8
+max_coord = 400
+rota.randomCoords(n, max_coord)
+print(rota)
+print(rota.maximo())

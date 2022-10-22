@@ -73,5 +73,24 @@ class Rota:
                 secondsPassed+=1
             delta = (time()*1000)-timestamp      
         return
+
+    def randomCoords(self, n, maxCoords):
+        for i in range(n):
+            x = random.randrange(1, maxCoords)
+            y = random.randrange(1, maxCoords)
+            self.addCoord(Coordenada((x,y)))
+        return
+
+    def maximo(self):
+        xMax = self.coordenadas[0].x
+        yMax = self.coordenadas[0].y
+        
+        for c in self.coordenadas:
+            if c.x > xMax:
+                xMax = c.x
+            if c.y > yMax:
+                yMax = c.y
+        
+        return (xMax, yMax)
               
                 
