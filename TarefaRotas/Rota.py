@@ -98,9 +98,10 @@ class Rota:
 
         routeSize = self.maximo()
         constX = (routeSize[0]*0.1)/2
-        constY = (routeSize[1])/2
+        constY = (routeSize[1]*0.5)/2
 
-        img = Image.new('RGB',(math.ceil(routeSize[0]*1.1), math.ceil(routeSize[1]*1.6)),(255,255,255))
+        img = Image.new('RGB',(math.ceil(routeSize[0]*1.1), math.ceil(routeSize[1]*1.4)),(255,255,255))
+        img1 = ImageDraw.Draw(img) 
         pixels = img.load()
 
         for c in self.coordenadas:
@@ -112,12 +113,13 @@ class Rota:
                 coord2 = (self.coordenadas[i+1].x+constX, self.coordenadas[i+1].y+constY)
             else:
                 coord2 = (self.coordenadas[0].x+constX, self.coordenadas[0].y+constY)
-            shape = [coord1, coord2] 
-            img1 = ImageDraw.Draw(img)   
+            shape = [coord1, coord2]  
             img1.line(shape, fill ="black", width = 2) 
 
         #TODO: Escrever comprimento
 
-        img.transpose(method=Image.FLIP_TOP_BOTTOM).save(fp)
+        
+        img = img.transpose(method=Image.FLIP_TOP_BOTTOM)
+        ImageDraw.Draw(img).text((img.width*0.1 , img.height*0.93), f"Comprimento = {self.comprimento()}", fill='black', align ="left")
 
-        return img.transpose(method=Image.FLIP_TOP_BOTTOM)
+        return img
