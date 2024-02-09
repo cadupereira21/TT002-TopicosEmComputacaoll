@@ -1,2 +1,4 @@
 # TT002-TopicosEmComputacaoll
-Estudo de temas relevantes em Computação e Informática. A ementa desta disciplina será definida por ocasião de seu oferecimento.Neste oferecimento o curso abordará aspectos avançados da programação Phyton, como computação gráfica, testes, manipulação de arquivos, acesso ao banco de dados, concorrência e paralelismo e resolução de problemas.
+In this repository I have managed the code I used in my TT002 - Computer Topics II classes from university
+
+In this classes, we learned to manipulate Text Files, Data Visualization, Image Manipulation and some other stuff using Python and it's libraries!
